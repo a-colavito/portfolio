@@ -48,29 +48,29 @@ theme = 'PaperMod'
       [languages.it.params.assets]
         disableScrollBarStyle = false
 
-    [[languages.en.menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/en/about/"
-    weight = 1
+    [[languages.it.menu.main]]
+      identifier = "about"
+      name = "Chi sono"
+      url = "/about/"
+      weight = 1
 
-  [[languages.en.menu.main]]
-    identifier = "projects"
-    name = "Projects"
-    url = "/en/projects/"
-    weight = 2
+    [[languages.it.menu.main]]
+      identifier = "projects"
+      name = "Progetti"
+      url = "/projects/"
+      weight = 2
 
-  [[languages.en.menu.main]]
-    identifier = "blogs"
-    name = "Blog"
-    url = "/en/blogs/"
-    weight = 3
+    [[languages.it.menu.main]]
+      identifier = "blogs"
+      name = "Blog"
+      url = "/blogs/"
+      weight = 3
 
-  [[languages.en.menu.main]]
-    identifier = "contacts"
-    name = "Contact"
-    url = "/en/contacts/"
-    weight = 4
+    [[languages.it.menu.main]]
+      identifier = "contacts"
+      name = "Contatti"
+      url = "/contacts/"
+      weight = 4
 
   [languages.en]
     languageName = "English"
@@ -119,28 +119,29 @@ theme = 'PaperMod'
         disableScrollBarStyle = false
 
     [[languages.en.menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/en/about/"
-    weight = 1
+      identifier = "about"
+      name = "About"
+      url = "/about/"
+      weight = 1
 
-  [[languages.en.menu.main]]
-    identifier = "projects"
-    name = "Projects"
-    url = "/en/projects/"
-    weight = 2
+    [[languages.en.menu.main]]
+      identifier = "projects"
+      name = "Projects"
+      url = "/projects/"
+      weight = 2
 
-  [[languages.en.menu.main]]
-    identifier = "blogs"
-    name = "Blog"
-    url = "/en/blogs/"
-    weight = 3
+    [[languages.en.menu.main]]
+      identifier = "blogs"
+      name = "Blog"
+      url = "/blogs/"
+      weight = 3
 
-  [[languages.en.menu.main]]
-    identifier = "contacts"
-    name = "Contact"
-    url = "/en/contacts/"
-    weight = 4
+    [[languages.en.menu.main]]
+      identifier = "contacts"
+      name = "Contact"
+      url = "/contacts/"
+      weight = 4
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]

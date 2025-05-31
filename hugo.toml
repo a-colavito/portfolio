@@ -1,0 +1,148 @@
+baseURL = 'https://example.org/'
+defaultContentLanguage = 'it'
+defaultContentLanguageInSubdir = true
+theme = 'PaperMod'
+
+[languages]
+
+  [languages.it]
+    languageName = "Italiano"
+    weight = 1
+    contentDir = "content/it"
+    languageCode = "it"
+    title = "Adolfo Colavito"
+
+    [languages.it.params]
+      env = "production"
+      title = "Adolfo Colavito"
+      description = "Portfolio di uno studente di ingegneria informatica"
+      customCSS = ["css/custom.css"]
+      ShowLangSwitch = true
+
+      [languages.it.params.profileMode]
+        enabled = true
+        title = "Ciao! 👋"
+        subtitle = "Sono Adolfo, studente di ingegneria informatica e questo è il mio portfolio."
+        imageUrl = "images/profile.jpg"
+        imageWidth = 300
+        imageHeight = 300
+
+        [[languages.it.params.profileMode.buttons]]
+          name = "Blog"
+          url = "/blogs/"
+
+        [[languages.it.params.profileMode.buttons]]
+          name = "Progetti"
+          url = "/projects/"
+
+      [[languages.it.params.socialIcons]]
+        name = "linkedin"
+        url = "https://linkedin.com/in/adolfo-colavito-5ab0a4276"
+
+      [[languages.it.params.socialIcons]]
+        name = "github"
+        url = "https://github.com/a-colavito"
+
+      [languages.it.params.label]
+        text = "< Adolfo Colavito />"
+      [languages.it.params.assets]
+        disableScrollBarStyle = false
+
+    [[languages.it.menu.main]]
+      identifier = "about"
+      name = "Chi sono"
+      url = "/about/"
+      weight = 1
+
+    [[languages.it.menu.main]]
+      identifier = "projects"
+      name = "Progetti"
+      url = "/projects/"
+      weight = 2
+
+    [[languages.it.menu.main]]
+      identifier = "blogs"
+      name = "Blog"
+      url = "/blogs/"
+      weight = 3
+
+    [[languages.it.menu.main]]
+      identifier = "contacts"
+      name = "Contatti"
+      url = "/contacts/"
+      weight = 4
+
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    contentDir = "content/en"
+    languageCode = "en-us"
+    title = "Adolfo Colavito"
+
+    [languages.en.params]
+      env = "production"
+      title = "Adolfo Colavito"
+      description = "Portfolio of a Computer Engineering student"
+      customCSS = ["css/custom.css"]
+      ShowLangSwitch = true
+
+      [languages.en.params.profileMode]
+        enabled = true
+        title = "Hi there! 👋"
+        subtitle = "I'm Adolfo, a Computer Engineering student and this is my portfolio."
+        imageUrl = "images/profile.jpg"
+        imageWidth = 300
+        imageHeight = 300
+
+        [[languages.en.params.profileMode.buttons]]
+          name = "Blog"
+          url = "/blogs/"
+
+        [[languages.en.params.profileMode.buttons]]
+          name = "Projects"
+          url = "/projects/"
+
+      [[languages.en.params.socialIcons]]
+        name = "linkedin"
+        url = "https://linkedin.com/in/adolfo-colavito-5ab0a4276"
+
+      [[languages.en.params.socialIcons]]
+        name = "github"
+        url = "https://github.com/a-colavito"
+
+      [languages.en.params.label]
+        text = "< Adolfo Colavito />"
+        
+      
+
+      [languages.en.params.assets]
+        disableScrollBarStyle = false
+
+    [[languages.en.menu.main]]
+      identifier = "about"
+      name = "About"
+      url = "/about/"
+      weight = 1
+
+    [[languages.en.menu.main]]
+      identifier = "projects"
+      name = "Projects"
+      url = "/projects/"
+      weight = 2
+
+    [[languages.en.menu.main]]
+      identifier = "blogs"
+      name = "Blog"
+      url = "/blogs/"
+      weight = 3
+
+    [[languages.en.menu.main]]
+      identifier = "contacts"
+      name = "Contact"
+      url = "/contacts/"
+      weight = 4
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

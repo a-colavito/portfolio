@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Adolfo Colavito</title>
+    <link>http://localhost:1313/en/</link>
+    <description>Recent content on Adolfo Colavito</description>
+    <generator>Hugo -- 0.147.5</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/en/blogs/post1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/blogs/post1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/en/blogs/uni-resources/unipost/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/blogs/uni-resources/unipost/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Contact</title>
+      <link>http://localhost:1313/en/contacts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/contacts/</guid>
+      <description>Fill the form, let&amp;#39;s keep in touch!</description>
+    </item>
+    <item>
+      <title>Hey, welcome!</title>
+      <link>http://localhost:1313/en/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/about/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m Adolfo, a computer engineer &lt;a href=&#34;http://localhost:1313/esami/&#34; style =&#34;text-decoration: none&#34;&gt;&lt;mark&gt;&lt;em&gt;wannabe.&lt;/em&gt;&lt;/mark&gt; &lt;/a&gt;
+On this site you&amp;rsquo;ll find my projects, the books I read, and the movies I&amp;rsquo;ve recently watched.
+So, not just a portfolio site but a hybrid space where you can understand what I like to do in the various contexts that occupy my life: work, culture, sports (this last section will arrive soon).
+The site is simple and essential, without unnecessary complications, modular, and easily updatable, all thanks to an efficient mix of &lt;a href=&#34;http://localhost:1313/progetti/aboutsite&#34; style =&#34;color: #282c30;&#34;&gt;&lt;b&gt;Hugo &amp;amp; Papermod&lt;/b&gt;&lt;/a&gt;.
+For any curiosity, project proposal, or exchange of ideas, don&amp;rsquo;t hesitate to &lt;a href=&#34;http://localhost:1313/en/contacts&#34; style=&#34;color: #282c30; &#34;&gt; contact me!&lt;/a&gt;  (I swear I even check the spam folder)&amp;quot;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>React Website</title>
+      <link>http://localhost:1313/en/projects/project1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/projects/project1/</guid>
+      <description>React site using react native</description>
+    </item>
+  </channel>
+</rss>

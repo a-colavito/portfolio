@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Contacts on Adolfo Colavito</title>
+    <link>http://localhost:1313/it/contacts/</link>
+    <description>Recent content in Contacts on Adolfo Colavito</description>
+    <generator>Hugo -- 0.147.2</generator>
+    <language>it</language>
+    <atom:link href="http://localhost:1313/it/contacts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Contact</title>
+      <link>http://localhost:1313/contacts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/contacts/</guid>
+      <description>&lt;/br&gt;
+&lt;p&gt;Ciao! Sono Adolfo, classe ‘97, diplomato al classico e attualmente studente presso la facoltà di Ingegneria Informatica del Politecnico di Bari, ma queste cose potrai leggerle nel potrai leggerle nel  &lt;a href=&#34;http://localhost:1313/PDF/CV_eng.pdf&#34; target=&#34;_blank&#34; style=&#34;color: #63a4ff; text-decoration: none;&#34;&gt;curriculum&lt;/a&gt;, quindi saltiamo alla parte meno noiosa ecco una lista di cose che mi piacciono:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I gatti&lt;/li&gt;
+&lt;li&gt;Correre&lt;/li&gt;
+&lt;li&gt;I Radiohead&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Hai un’idea da condividere, una proposta di collaborazione o semplicemente vuoi fare due chiacchiere? Compila il form qui sotto, e sarò felice di sentirti!
+&lt;/br&gt;
+&lt;/br&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

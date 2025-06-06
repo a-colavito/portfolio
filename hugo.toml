@@ -40,7 +40,7 @@ ShowCodeCopyButtons = true
         enabled = true
         title = "Ciao! 👋"
         subtitle = "Sono Adolfo, studente di ingegneria informatica e questo è il mio portfolio."
-        imageUrl = "images/profile.jpeg"
+        imageUrl = "images/profile.jpg"
         imageWidth = 250
         imageHeight = 250
 
@@ -107,7 +107,7 @@ ShowCodeCopyButtons = true
         enabled = true
         title = "Hi there! 👋"
         subtitle = "I'm Adolfo, a Computer Engineering student and this is my portfolio."
-        imageUrl = "images/profile.jpeg"
+        imageUrl = "images/profile.jpg"
         imageWidth = 250
         imageHeight = 250
 

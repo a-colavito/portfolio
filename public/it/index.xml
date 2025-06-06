@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Adolfo Colavito</title>
+    <link>https://a-colavito.github.io/portfolio/it/</link>
+    <description>Recent content on Adolfo Colavito</description>
+    <generator>Hugo -- 0.147.5</generator>
+    <language>it</language>
+    <atom:link href="https://a-colavito.github.io/portfolio/it/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://a-colavito.github.io/portfolio/it/blogs/post1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://a-colavito.github.io/portfolio/it/blogs/post1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Contatti</title>
+      <link>https://a-colavito.github.io/portfolio/it/contacts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://a-colavito.github.io/portfolio/it/contacts/</guid>
+      <description>Compila il form, restiamo in contatto!</description>
+    </item>
+    <item>
+      <title>Hey, Benvenuto!</title>
+      <link>https://a-colavito.github.io/portfolio/it/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://a-colavito.github.io/portfolio/it/about/</guid>
+      <description>&lt;p&gt;Sono Adolfo, ingegnere informatico  &lt;a href=&#34;https://a-colavito.github.io/portfolio/esami/&#34; style=&#34;text-decoration: none; background-color: var(--code-bg); color: var(--primary); padding: 2px 4px; border-radius: 3px;&#34;&gt;&lt;em&gt;wannabe.&lt;/em&gt;&lt;/a&gt;
+In questo sito troverai i miei progetti, i libri che leggo e i film visti di recente.&lt;br&gt;
+Non solo quindi un sito portfolio ma uno spazio ibrido dove potrai capire cosa mi piace fare nei vari contesti che occupano la mia vita: lavorativo, culturale, sportivo (quest&amp;rsquo;ultima sezione arriverà presto).&lt;br&gt;
+Il sito è semplice ed essenziale, senza inutili complicazioni, modulare e facilmente aggiornabile, il tutto grazie a un mix efficiente di &lt;a href=&#34;https://a-colavito.github.io/portfolio/progetti/aboutsite&#34; style=&#34;color: var(--primary); font-weight: bold;&#34;&gt;Hugo &amp;amp; Papermod&lt;/a&gt;.
+Per qualsiasi curiosità, proposta di progetto o scambio di idee, non esistare a &lt;a href=&#34;https://a-colavito.github.io/portfolio/it/contacts&#34; style=&#34;color: var(--primary); font-weight: bold;&#34;&gt;contattarmi!&lt;/a&gt; (giuro leggo anche la cartella di spam)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>React Website</title>
+      <link>https://a-colavito.github.io/portfolio/it/projects/project1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://a-colavito.github.io/portfolio/it/projects/project1/</guid>
+      <description>React site using react native</description>
+    </item>
+  </channel>
+</rss>

@@ -3,21 +3,13 @@ defaultContentLanguage = 'it'
 defaultContentLanguageInSubdir = true
 theme = 'PaperMod'
 
-# Add commonly used PaperMod parameters at root level
 [params]
-# Enable search functionality
 enableSearch = true
-# Enable dark/light mode toggle
-defaultTheme = "auto" 
-# Show reading time
+defaultTheme = "auto"
 ShowReadingTime = true
-# Show table of contents
 ShowToc = true
-# Show post navigation
 ShowPostNavLinks = true
-# Show breadcrumbs
 ShowBreadCrumbs = true
-# Show code copy buttons
 ShowCodeCopyButtons = true
 
 [languages]
@@ -46,11 +38,11 @@ ShowCodeCopyButtons = true
 
         [[languages.it.params.profileMode.buttons]]
           name = "Blog"
-          url = "/blogs/"
+          url = "blogs/"
 
         [[languages.it.params.profileMode.buttons]]
           name = "Progetti"
-          url = "/projects/"
+          url = "projects/"
 
       [[languages.it.params.socialIcons]]
         name = "linkedin"
@@ -62,6 +54,7 @@ ShowCodeCopyButtons = true
 
       [languages.it.params.label]
         text = "< Adolfo Colavito />"
+
       [languages.it.params.assets]
         disableScrollBarStyle = false
 
@@ -74,19 +67,19 @@ ShowCodeCopyButtons = true
     [[languages.it.menu.main]]
       identifier = "projects"
       name = "Progetti"
-      url = "/projects/"
+      url = "projects/"
       weight = 2
 
     [[languages.it.menu.main]]
       identifier = "blogs"
       name = "Blog"
-      url = "/blogs/"
+      url = "blogs/"
       weight = 3
 
     [[languages.it.menu.main]]
       identifier = "contacts"
       name = "Contatti"
-      url = "/contacts/"
+      url = "contacts/"
       weight = 4
 
   [languages.en]
@@ -113,11 +106,11 @@ ShowCodeCopyButtons = true
 
         [[languages.en.params.profileMode.buttons]]
           name = "Blog"
-          url = "/blogs/"
+          url = "blogs/"
 
         [[languages.en.params.profileMode.buttons]]
           name = "Projects"
-          url = "/projects/"
+          url = "projects/"
 
       [[languages.en.params.socialIcons]]
         name = "linkedin"
@@ -129,8 +122,6 @@ ShowCodeCopyButtons = true
 
       [languages.en.params.label]
         text = "< Adolfo Colavito />"
-        
-      
 
       [languages.en.params.assets]
         disableScrollBarStyle = false
@@ -138,25 +129,25 @@ ShowCodeCopyButtons = true
     [[languages.en.menu.main]]
       identifier = "about"
       name = "About"
-      url = "/about/"
+      url = "about/"
       weight = 1
 
     [[languages.en.menu.main]]
       identifier = "projects"
       name = "Projects"
-      url = "/projects/"
+      url = "projects/"
       weight = 2
 
     [[languages.en.menu.main]]
       identifier = "blogs"
       name = "Blog"
-      url = "/blogs/"
+      url = "blogs/"
       weight = 3
 
     [[languages.en.menu.main]]
       identifier = "contacts"
       name = "Contact"
-      url = "/contacts/"
+      url = "contacts/"
       weight = 4
 
 [markup]
@@ -164,6 +155,5 @@ ShowCodeCopyButtons = true
     [markup.goldmark.renderer]
       unsafe = true
 
-# Add outputs for search functionality  
 [outputs]
   home = ["HTML", "RSS", "JSON"]

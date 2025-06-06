@@ -1,5 +1,6 @@
-baseURL = 'https://example.org/'
-
+baseURL = 'https://a-colavito.github.io/it/portfolio/'
+defaultContentLanguage = 'it'
+defaultContentLanguageInSubdir = true
 theme = 'PaperMod'
 
 # Add commonly used PaperMod parameters at root level

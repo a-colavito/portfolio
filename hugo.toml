@@ -1,4 +1,4 @@
-baseURL = 'https://a-colavito.github.io/it/portfolio/'
+baseURL = 'https://a-colavito.github.io/portfolio/'
 defaultContentLanguage = 'it'
 defaultContentLanguageInSubdir = true
 theme = 'PaperMod'

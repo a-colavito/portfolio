@@ -185,14 +185,14 @@
 
 <article class="post-single">
   <header class="post-header">
-    
+    <div class="breadcrumbs"><a href="http://localhost:1313/en/">Home</a></div>
     <h1 class="post-title entry-hint-parent">
       Contact
     </h1>
     <div class="post-description">
       Fill the form, let&#39;s keep in touch!
     </div>
-    <div class="post-meta">Translations:
+    <div class="post-meta">1 min&nbsp;|&nbsp;Translations:
 <ul class="i18n_list">
     <li>
         <a href="http://localhost:1313/it/contacts/">It</a>
@@ -201,6 +201,7 @@
 
 </div>
   </header> 
+
   <div class="post-content"><p>Hi! I&rsquo;m Adolfo, born in &lsquo;97, a classical studies graduate and currently a student in the Computer Engineering faculty at the Polytechnic University of Bari, but you can read about these things in my  <a href="/PDF/CV_eng.pdf" target="_blank" style="color: #63a4ff; text-decoration: none;">resume</a>, so let&rsquo;s skip to the less boring part, here&rsquo;s a list of things I like:</p>
 <ul>
 <li>Cats</li>
@@ -230,6 +231,7 @@
   <footer class="post-footer">
     <ul class="post-tags">
     </ul>
+
   </footer>
 </article>
     </main>
@@ -302,6 +304,53 @@
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

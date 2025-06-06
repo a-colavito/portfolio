@@ -26,11 +26,11 @@
       <link>http://localhost:1313/it/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/it/about/</guid>
-      <description>&lt;p&gt;Sono Adolfo, ingegnere informatico  &lt;a href=&#34;http://localhost:1313/esami/&#34; style =&#34;text-decoration: none&#34;&gt;&lt;mark&gt;&lt;em&gt;wannabe.&lt;/em&gt;&lt;/mark&gt; &lt;/a&gt;
+      <description>&lt;p&gt;Sono Adolfo, ingegnere informatico  &lt;a href=&#34;http://localhost:1313/esami/&#34; style=&#34;text-decoration: none; background-color: var(--code-bg); color: var(--primary); padding: 2px 4px; border-radius: 3px;&#34;&gt;&lt;em&gt;wannabe.&lt;/em&gt;&lt;/a&gt;
 In questo sito troverai i miei progetti, i libri che leggo e i film visti di recente.&lt;br&gt;
 Non solo quindi un sito portfolio ma uno spazio ibrido dove potrai capire cosa mi piace fare nei vari contesti che occupano la mia vita: lavorativo, culturale, sportivo (quest&amp;rsquo;ultima sezione arriverà presto).&lt;br&gt;
-Il sito è semplice ed essenziale, senza inutili complicazioni, modulare e facilmente aggiornabile, il tutto grazie a un mix efficiente di &lt;a href=&#34;http://localhost:1313/progetti/aboutsite&#34; style =&#34;color: #282c30;&#34;&gt;&lt;b&gt;Hugo &amp;amp; Papermod&lt;/b&gt;&lt;/a&gt;.
-Per qualsiasi curiosità, proposta di progetto o scambio di idee, non esistare a &lt;a href=&#34;http://localhost:1313/it/contacts&#34; style=&#34;color: #282c30; &#34;&gt; contattarmi!&lt;/a&gt;  (giuro leggo anche la cartella di spam)&lt;/p&gt;</description>
+Il sito è semplice ed essenziale, senza inutili complicazioni, modulare e facilmente aggiornabile, il tutto grazie a un mix efficiente di &lt;a href=&#34;http://localhost:1313/progetti/aboutsite&#34; style=&#34;color: var(--primary); font-weight: bold;&#34;&gt;Hugo &amp;amp; Papermod&lt;/a&gt;.
+Per qualsiasi curiosità, proposta di progetto o scambio di idee, non esistare a &lt;a href=&#34;http://localhost:1313/it/contacts&#34; style=&#34;color: var(--primary); font-weight: bold;&#34;&gt;contattarmi!&lt;/a&gt; (giuro leggo anche la cartella di spam)&lt;/p&gt;</description>
     </item>
     <item>
       <title>React Website</title>

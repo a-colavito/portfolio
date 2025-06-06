@@ -192,14 +192,14 @@
 
 <article class="post-single">
   <header class="post-header">
-    
+    <div class="breadcrumbs"><a href="http://localhost:1313/it/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/it/projects/">Projects</a></div>
     <h1 class="post-title entry-hint-parent">
       React Website
     </h1>
     <div class="post-description">
       React site using react native
     </div>
-    <div class="post-meta">Traduzioni:
+    <div class="post-meta">1 minuto&nbsp;|&nbsp;Traduzioni:
 <ul class="i18n_list">
     <li>
         <a href="http://localhost:1313/en/projects/project1/">En</a>
@@ -208,6 +208,7 @@
 
 </div>
   </header> 
+
   <div class="post-content"><p>Contenuto dettagliato del progetto&hellip;</p>
 
 
@@ -216,6 +217,7 @@
   <footer class="post-footer">
     <ul class="post-tags">
     </ul>
+
   </footer>
 </article>
     </main>
@@ -288,6 +290,53 @@
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copia';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copiato!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copia';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

@@ -3,6 +3,23 @@ defaultContentLanguage = 'it'
 defaultContentLanguageInSubdir = true
 theme = 'PaperMod'
 
+# Add commonly used PaperMod parameters at root level
+[params]
+# Enable search functionality
+enableSearch = true
+# Enable dark/light mode toggle
+defaultTheme = "auto" 
+# Show reading time
+ShowReadingTime = true
+# Show table of contents
+ShowToc = true
+# Show post navigation
+ShowPostNavLinks = true
+# Show breadcrumbs
+ShowBreadCrumbs = true
+# Show code copy buttons
+ShowCodeCopyButtons = true
+
 [languages]
 
   [languages.it]
@@ -23,9 +40,9 @@ theme = 'PaperMod'
         enabled = true
         title = "Ciao! 👋"
         subtitle = "Sono Adolfo, studente di ingegneria informatica e questo è il mio portfolio."
-        imageUrl = "images/profile.jpg"
-        imageWidth = 300
-        imageHeight = 300
+        imageUrl = "images/profile.jpeg"
+        imageWidth = 250
+        imageHeight = 250
 
         [[languages.it.params.profileMode.buttons]]
           name = "Blog"
@@ -90,9 +107,9 @@ theme = 'PaperMod'
         enabled = true
         title = "Hi there! 👋"
         subtitle = "I'm Adolfo, a Computer Engineering student and this is my portfolio."
-        imageUrl = "images/profile.jpg"
-        imageWidth = 300
-        imageHeight = 300
+        imageUrl = "images/profile.jpeg"
+        imageWidth = 250
+        imageHeight = 250
 
         [[languages.en.params.profileMode.buttons]]
           name = "Blog"
@@ -146,3 +163,7 @@ theme = 'PaperMod'
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+# Add outputs for search functionality  
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

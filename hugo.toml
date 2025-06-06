@@ -1,5 +1,5 @@
 baseURL = 'https://example.org/'
-defaultContentLanguageInSubdir = true
+
 theme = 'PaperMod'
 
 # Add commonly used PaperMod parameters at root level

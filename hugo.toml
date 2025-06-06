@@ -68,7 +68,7 @@ ShowCodeCopyButtons = true
     [[languages.it.menu.main]]
       identifier = "about"
       name = "Chi sono"
-      url = "/about/"
+      url = "about/"
       weight = 1
 
     [[languages.it.menu.main]]

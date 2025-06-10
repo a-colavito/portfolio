@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/portfolio/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=portfolio/livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Simple Mapping Project | Adolfo Colavito</title>
+<meta name="keywords" content="">
+<meta name="description" content="Start of the project for mapping Poliba resources using Leaflet">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/portfolio/en/projects/leafletmap/">
+<link crossorigin="anonymous" href="/portfolio/assets/css/stylesheet.3fb3537f63cc1a4b436f6e8f2c04b9d6eb28f49c6fa71a94e6c72ce451d001a2.css" integrity="sha256-P7NTf2PMGktDb26PLAS51uso9JxvpxqU5scs5FHQAaI=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/portfolio/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/portfolio/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/portfolio/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/portfolio/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/portfolio/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/portfolio/en/projects/leafletmap/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="http://localhost:1313/portfolio/en/projects/leafletmap/">
+  <meta property="og:site_name" content="Adolfo Colavito">
+  <meta property="og:title" content="Simple Mapping Project">
+  <meta property="og:description" content="Start of the project for mapping Poliba resources using Leaflet">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="projects">
+    <meta property="article:published_time" content="2024-10-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-10-10T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simple Mapping Project">
+<meta name="twitter:description" content="Start of the project for mapping Poliba resources using Leaflet">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "http://localhost:1313/portfolio/en/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Simple Mapping Project",
+      "item": "http://localhost:1313/portfolio/en/projects/leafletmap/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Simple Mapping Project",
+  "name": "Simple Mapping Project",
+  "description": "Start of the project for mapping Poliba resources using Leaflet",
+  "keywords": [
+    
+  ],
+  "articleBody": " You can use the app here Mapping the Libraries This project focuses on visualizing the university library maps using OpenStreetMap and the JavaScript library Leaflet.\nProject Structure The entire project is contained in the SBAMappe folder, which includes the HTML files for the four university library maps. Inside this folder, there are three subfolders:\nDataset Script Style Dataset Folder This folder contains the Percorsi subfolder, which in turn includes JS files with variables (named identically to the file) to initialize GeoJSON data for the paths. All data on points, polygons, resources, and paths are extracted from these files.\nScript Folder The Script folder contains a single file, MapLogic.js, which handles the map logic. The main functionalities of this file include:\nMap constructor: a function that takes parameters such as centerCoordinates, zoomLevel, etc., to set up Leaflet layers and determine how the library is represented on the map and in the dropdown menu. Adding custom layers to the map. Dropdown menu management: allows toggling the menu and initializing the paths, displaying information related to the library. Leaflet function customization: extends the Leaflet library with specific customizations. The constructor function simplifies the initialization of the map, allowing customization through parameters passed to the initializeMap function. This approach makes the HTML code cleaner and facilitates the addition of new resources simply by calling the script in the HTML file of the new resource.\nStyle Folder The Style folder contains the SBACSS file, which handles the appearance of the map menu and implements the .hidden class, essential for the toggle functionality to work correctly alongside MapLogic.js.\nThe stylesheet includes Politecnico di Bari’s brand color for the menu header and a test font (which can be safely removed to avoid conflicts).\nNote: The map size is not managed in the stylesheet but is instead defined directly in the HTML file for convenience.\nIndividual Library HTML Files The HTML files for each library are very simple. They import Leaflet libraries and stylesheets and then populate the HTML content through the initializeMap function.\nAll elements in the dropdown menu are generated by the initializeMap function. Moreover, the menu and the map container are hierarchically structured so they stay “attached” to each other.\nAdditional Choices and Useful Information The paths were created using the Google Maps API. The MapLogic.js file is thoroughly commented, as there are some situations where Leaflet’s behavior had to be overridden to apply custom rules (e.g., red markers and paths using the Politecnico di Bari color). Libraries are imported from the web, but it might be more efficient to download them locally onto a university server. Not being particularly experienced in web development, I can’t say which solution would be best to optimize loading. Possible Future Developments for Mapping the Entire Politecnico In my opinion, there are two options for mapping the entire university:\nUse the Politecnico’s CAD blueprints: these could be added as custom layers on OpenStreetMap using Leaflet. Extract GeoJSON data from the BeFreeCampus app: port the app to the web, potentially as a WebApp or using solutions like Flutter / React Native to make it available on multiple devices. Both options offer pros and cons. Extracting GeoJSON data and mapping the university via code provides great modularity and ease in modifying resource locations (e.g., if offices are moved, there’s no need to request a new blueprint—just update the code). On the other hand, implementing the map using the blueprints provides greater visibility on access points such as stairs and elevators and allows embedding resources in a detailed context.\nBoth solutions would enable mapping of each floor and improve the referencing of resources, both in terms of accessibility and support for external and internal users in locating facilities.\nThe combination of Leaflet and OpenStreetMap provides a solid framework for both solutions.\nContact For any information requests, Send me an email.\n",
+  "wordCount" : "638",
+  "inLanguage": "en",
+  "datePublished": "2024-10-10T00:00:00Z",
+  "dateModified": "2024-10-10T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/portfolio/en/projects/leafletmap/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Adolfo Colavito",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/portfolio/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/portfolio/en/" accesskey="h" title="&lt; Adolfo Colavito /&gt; (Alt + H)">&lt; Adolfo Colavito /&gt;</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="http://localhost:1313/portfolio/it/" title="Italiano"
+                            aria-label="Italiano">It</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/portfolio/en/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/portfolio/en/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/portfolio/en/blogs/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/portfolio/en/contacts/" title="Contact">
+                    <span>Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/portfolio/en/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/portfolio/en/projects/">Projects</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Simple Mapping Project
+    </h1>
+    <div class="post-description">
+      Start of the project for mapping Poliba resources using Leaflet
+    </div>
+    <div class="post-meta"><span title='2024-10-10 00:00:00 +0000 UTC'>October 10, 2024</span>&nbsp;·&nbsp;3 min
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#mapping-the-libraries" aria-label="Mapping the Libraries">Mapping the Libraries</a><ul>
+                        
+                <li>
+                    <a href="#project-structure" aria-label="Project Structure">Project Structure</a><ul>
+                        
+                <li>
+                    <a href="#dataset-folder" aria-label="Dataset Folder">Dataset Folder</a></li>
+                <li>
+                    <a href="#script-folder" aria-label="Script Folder">Script Folder</a></li>
+                <li>
+                    <a href="#style-folder" aria-label="Style Folder">Style Folder</a></li>
+                <li>
+                    <a href="#individual-library-html-files" aria-label="Individual Library HTML Files">Individual Library HTML Files</a></li></ul>
+                </li>
+                <li>
+                    <a href="#additional-choices-and-useful-information" aria-label="Additional Choices and Useful Information">Additional Choices and Useful Information</a></li>
+                <li>
+                    <a href="#possible-future-developments-for-mapping-the-entire-politecnico" aria-label="Possible Future Developments for Mapping the Entire Politecnico">Possible Future Developments for Mapping the Entire Politecnico</a></li>
+                <li>
+                    <a href="#contact" aria-label="Contact">Contact</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><img src="https://res.cloudinary.com/dkkvkj82k/image/upload/v1749552452/Screenshot_2025-06-10_alle_12.46.47_hqonwp.png" style="width: 100%; height: 30%" >
+<a href="https://mappegeneral.netlify.app"> You can use the app here </a>
+<h1 id="mapping-the-libraries">Mapping the Libraries<a hidden class="anchor" aria-hidden="true" href="#mapping-the-libraries">#</a></h1>
+<p>This project focuses on visualizing the university library maps using <strong>OpenStreetMap</strong> and the JavaScript library <strong>Leaflet</strong>.</p>
+<h2 id="project-structure">Project Structure<a hidden class="anchor" aria-hidden="true" href="#project-structure">#</a></h2>
+<p>The entire project is contained in the <strong>SBAMappe</strong> folder, which includes the HTML files for the four university library maps. Inside this folder, there are three subfolders:</p>
+<ul>
+<li><strong>Dataset</strong></li>
+<li><strong>Script</strong></li>
+<li><strong>Style</strong></li>
+</ul>
+<h3 id="dataset-folder"><strong>Dataset</strong> Folder<a hidden class="anchor" aria-hidden="true" href="#dataset-folder">#</a></h3>
+<p>This folder contains the <strong>Percorsi</strong> subfolder, which in turn includes JS files with variables (named identically to the file) to initialize <strong>GeoJSON</strong> data for the paths. All data on points, polygons, resources, and paths are extracted from these files.</p>
+<h3 id="script-folder"><strong>Script</strong> Folder<a hidden class="anchor" aria-hidden="true" href="#script-folder">#</a></h3>
+<p>The <strong>Script</strong> folder contains a single file, <strong>MapLogic.js</strong>, which handles the map logic. The main functionalities of this file include:</p>
+<ul>
+<li><strong>Map constructor</strong>: a function that takes parameters such as <code>centerCoordinates</code>, <code>zoomLevel</code>, etc., to set up Leaflet layers and determine how the library is represented on the map and in the dropdown menu.</li>
+<li><strong>Adding custom layers</strong> to the map.</li>
+<li><strong>Dropdown menu management</strong>: allows toggling the menu and initializing the paths, displaying information related to the library.</li>
+<li><strong>Leaflet function customization</strong>: extends the Leaflet library with specific customizations.</li>
+</ul>
+<p>The constructor function simplifies the initialization of the map, allowing customization through parameters passed to the <strong>initializeMap</strong> function. This approach makes the HTML code cleaner and facilitates the addition of new resources simply by calling the script in the HTML file of the new resource.</p>
+<h3 id="style-folder"><strong>Style</strong> Folder<a hidden class="anchor" aria-hidden="true" href="#style-folder">#</a></h3>
+<p>The <strong>Style</strong> folder contains the <strong>SBACSS</strong> file, which handles the appearance of the map menu and implements the <code>.hidden</code> class, essential for the toggle functionality to work correctly alongside <strong>MapLogic.js</strong>.</p>
+<p>The stylesheet includes Politecnico di Bari’s brand color for the menu header and a test font (which can be safely removed to avoid conflicts).</p>
+<p><strong>Note:</strong> The map size is not managed in the stylesheet but is instead defined directly in the HTML file for convenience.</p>
+<h3 id="individual-library-html-files">Individual Library HTML Files<a hidden class="anchor" aria-hidden="true" href="#individual-library-html-files">#</a></h3>
+<p>The HTML files for each library are very simple. They import Leaflet libraries and stylesheets and then populate the HTML content through the <strong>initializeMap</strong> function.</p>
+<p>All elements in the dropdown menu are generated by the <strong>initializeMap</strong> function. Moreover, the menu and the map container are hierarchically structured so they stay “attached” to each other.</p>
+<h2 id="additional-choices-and-useful-information">Additional Choices and Useful Information<a hidden class="anchor" aria-hidden="true" href="#additional-choices-and-useful-information">#</a></h2>
+<ul>
+<li>The paths were created using the Google Maps API.</li>
+<li>The <strong>MapLogic.js</strong> file is thoroughly commented, as there are some situations where Leaflet’s behavior had to be overridden to apply custom rules (e.g., red markers and paths using the Politecnico di Bari color).</li>
+<li>Libraries are imported from the web, but it might be more efficient to download them locally onto a university server. Not being particularly experienced in web development, I can&rsquo;t say which solution would be best to optimize loading.</li>
+</ul>
+<h2 id="possible-future-developments-for-mapping-the-entire-politecnico">Possible Future Developments for Mapping the Entire Politecnico<a hidden class="anchor" aria-hidden="true" href="#possible-future-developments-for-mapping-the-entire-politecnico">#</a></h2>
+<p>In my opinion, there are two options for mapping the entire university:</p>
+<ol>
+<li><strong>Use the Politecnico’s CAD blueprints</strong>: these could be added as custom layers on OpenStreetMap using Leaflet.</li>
+<li><strong>Extract GeoJSON data from the BeFreeCampus app</strong>: port the app to the web, potentially as a WebApp or using solutions like Flutter / React Native to make it available on multiple devices.</li>
+</ol>
+<p>Both options offer pros and cons. Extracting GeoJSON data and mapping the university via code provides great modularity and ease in modifying resource locations (e.g., if offices are moved, there&rsquo;s no need to request a new blueprint—just update the code). On the other hand, implementing the map using the blueprints provides greater visibility on access points such as stairs and elevators and allows embedding resources in a detailed context.</p>
+<p>Both solutions would enable mapping of each floor and improve the referencing of resources, both in terms of accessibility and support for external and internal users in locating facilities.</p>
+<p>The combination of Leaflet and OpenStreetMap provides a solid framework for both solutions.</p>
+<h2 id="contact">Contact<a hidden class="anchor" aria-hidden="true" href="#contact">#</a></h2>
+<p>For any information requests, <a href="mailto:adolfocolavito@hotmail.it">Send me an email</a>.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="next" href="http://localhost:1313/portfolio/en/projects/project1/">
+    <span class="title">Next »</span>
+    <br>
+    <span>React Website</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/portfolio/en/">Adolfo Colavito</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

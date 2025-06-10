@@ -2,6 +2,7 @@
 title: "Progetto Semplice Mappatura"
 description: "Inizio del progetto di mappatura delle risorse del Poliba con Leaflet"
 image: "https://res.cloudinary.com/dkkvkj82k/image/upload/v1749552452/Screenshot_2025-06-10_alle_12.46.47_hqonwp.png"
+date: 2024-10-10
 ---
 <img src="https://res.cloudinary.com/dkkvkj82k/image/upload/v1749552452/Screenshot_2025-06-10_alle_12.46.47_hqonwp.png" style="width: 100%; height: 30%" >
 <a href="https://mappegeneral.netlify.app"> Qui puoi usare l'app </a>
@@ -49,7 +50,7 @@ Tutti gli elementi nel menu a tendina vengono generati dalla funzione **initiali
 
 ## Ulteriori scelte e informazioni utili
 
-- I percorsi sono stati creati utilizzando MapTier, un'applicazione web che permette di creare percorsi e convertirli in file GeoJSON. I percorsi sono stati realizzati internamente e non sono stati presi da risorse online.
+- I percorsi sono stati creati utilizzando API di Google Maps. 
 - Il file **MapLogic.js** è stato commentato in modo dettagliato, poiché ci sono alcune situazioni in cui è stato necessario forzare il comportamento di Leaflet per sovrascrivere regole personalizzate (come marker rossi e percorsi con il colore del Politecnico di Bari).
 - Le librerie sono importate dal web, ma potrebbe essere più efficiente scaricarle in locale su un server del Politecnico. Non essendo particolarmente esperto di sviluppo web, non posso dire quale soluzione sarebbe la migliore per ottimizzare il caricamento.
 
@@ -58,7 +59,7 @@ Tutti gli elementi nel menu a tendina vengono generati dalla funzione **initiali
 A mio parere, ci sono due opzioni per mappare l'intero Politecnico:
 
 1. **Utilizzare le piantine CAD del Politecnico**: queste potrebbero essere aggiunte come layer personalizzati su OpenStreetMap utilizzando Leaflet.
-2. **Estrarre i dati GeoJSON dall'applicazione BeFreeCampus**: fare un porting dell'app in chiave web, eventualmente come WebApp o utilizzando soluzioni come Flutter per renderla disponibile su più dispositivi.
+2. **Estrarre i dati GeoJSON dall'applicazione BeFreeCampus**: fare un porting dell'app in chiave web, eventualmente come WebApp o utilizzando soluzioni come Flutter / React Native  per renderla disponibile su più dispositivi.
 
 Entrambe le opzioni offrono vantaggi e svantaggi. La scelta di estrarre i dati GeoJSON e mappare il Politecnico tramite codice offre grande modularità e facilità nel modificare la posizione delle risorse (ad esempio, se gli uffici vengono spostati, non è necessario richiedere una nuova piantina, basta modificare il codice). D'altra parte, implementare la mappa utilizzando le piantine offre maggiore visibilità sugli accessi, come scale e ascensori, e permetterebbe di inserire risorse in un contesto dettagliato.
 

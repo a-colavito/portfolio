@@ -5,7 +5,7 @@ description: "Compila il form, restiamo in contatto!"
 
 
 
-Ciao! Sono Adolfo, classe ‘97, diplomato al classico e attualmente studente presso la facoltà di Ingegneria Informatica del Politecnico di Bari, ma queste cose potrai leggerle nel potrai leggerle nel  <a href="/PDF/CV_it.pdf" target="_blank" style="color: #63a4ff; text-decoration: none;">curriculum</a>, quindi saltiamo alla parte meno noiosa ecco una lista di cose che mi piacciono:
+Ciao! Sono Adolfo, classe ‘97, diplomato al classico e attualmente studente presso la facoltà di Ingegneria Informatica del Politecnico di Bari, ma queste cose potrai leggerle nel potrai leggerle nel  <a href="https://res.cloudinary.com/dkkvkj82k/image/upload/v1749566768/CV_it_dby0co.pdf" target="_blank">curriculum</a>, quindi saltiamo alla parte meno noiosa ecco una lista di cose che mi piacciono:
 
   - I gatti  
   - Correre  

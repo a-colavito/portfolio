@@ -4,7 +4,7 @@ description: "Fill the form, let's keep in touch!"
 ---
 
 
-Hi! I'm Adolfo, born in '97, a classical studies graduate and currently a student in the Computer Engineering faculty at the Polytechnic University of Bari, but you can read about these things in my  <a href="/PDF/CV_eng.pdf" target="_blank" style="color: #63a4ff; text-decoration: none;">resume</a>, so let's skip to the less boring part, here's a list of things I like:
+Hi! I'm Adolfo, born in '97, a classical studies graduate and currently a student in the Computer Engineering faculty at the Polytechnic University of Bari, but you can read about these things in my  <a href="https://res.cloudinary.com/dkkvkj82k/image/upload/v1749566775/CV_eng_vf1fpi.pdf" target="_blank">resume</a>, so let's skip to the less boring part, here's a list of things I like:
 
 - Cats
 - Running

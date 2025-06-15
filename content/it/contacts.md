@@ -30,7 +30,7 @@ Hai un’idea da condividere, una proposta di collaborazione o semplicemente vuo
     <textarea name="message" rows="5" required></textarea>
   </label><br><br>
 
-  <button type="submit" >Send</button>
+  <button type="submit" >Invia</button>
 </form>
 
 

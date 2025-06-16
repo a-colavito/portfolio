@@ -7,7 +7,7 @@ title: Simple mapping project
 
 > ⚠️ *This content was automatically translated from Italian using a machine translation tool.*
 
-<img src="https://res.cloudinary.com/dkvkj82k/image/upload/v1749552452/screenshot_2025-06-10_alle_12.46.47_hqonwp.png" Style = "Width: 100%; Height: 30%">
+<img src="https://res.cloudinary.com/dkkvkj82k/image/upload/v1749552452/Screenshot_2025-06-10_alle_12.46.47_hqonwp.png" style="width: 100%; height: 30%" >
 <a href = "https://mappegeneral.netlify.app"> here you can use the app </a>
 
 # Map libraries

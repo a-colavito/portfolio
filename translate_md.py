@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 import yaml
 # Importa la classe principale dal modulo
-from md_translate.translator import Translator 
+from md_translate import Translator
 # Potresti aver bisogno di configurare un provider, es. per Google Cloud Translation API
 # from md_translate.backends import GoogleTranslateBackend
 

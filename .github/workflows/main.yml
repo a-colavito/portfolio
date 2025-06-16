@@ -29,8 +29,8 @@ jobs:
         with:
           submodules: recursive # Include i sottomoduli
           fetch-depth: 0 # Clona tutta la cronologia (necessario per il commit)
-          # Passa il Personal Access Token direttamente all'azione di checkout.
-          # Questo configura correttamente le credenziali Git per i comandi successivi.
+        
+          
           token: ${{ secrets.GH_PAT }}
 
       - name: Setup Python

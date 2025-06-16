@@ -1,92 +1,62 @@
 import os
 from pathlib import Path
-from deep_translator import GoogleTranslator
 import yaml
+# Importa la classe principale dal modulo
+from md_translate.translator import Translator 
+# Potresti aver bisogno di configurare un provider, es. per Google Cloud Translation API
+# from md_translate.backends import GoogleTranslateBackend
 
-MAX_CHARS = 4999  # Google Translate limit is 5000, stay safe
+def process_with_md_translate(src_dir, tgt_dir, src_lang_code, tgt_lang_code):
+    # Inizializza il traduttore. Potresti voler configurare un backend specifico
+    # se non vuoi usare il default (spesso Google Translate via web, come deep_translator)
+    # Per una qualità e affidabilità migliori, useresti un backend API configurato.
+    # Ad esempio: translator = Translator(backend=GoogleTranslateBackend(api_key="TUA_CHIAVE_API"))
+    
+    # Se vuoi usare il default (Google Translate web scraping, come deep_translator senza key)
+    translator = Translator() 
 
-def extract_front_matter(text):
-    """Estrae il front matter (intestazione YAML) dal contenuto Markdown."""
-    if text.startswith("---"):
-        parts = text.split("---", 2)
-        fm = yaml.safe_load(parts[1])
-        body = parts[2].lstrip("\n")
-        return fm, body
-    return {}, text
-
-def split_text(text, max_chars=MAX_CHARS):
-    """Divide il testo in blocchi più piccoli rispettando i paragrafi."""
-    paragraphs = text.split("\n\n")
-    chunks = []
-    current = ""
-
-    for p in paragraphs:
-        if len(current) + len(p) + 2 < max_chars:
-            current += p + "\n\n"
-        else:
-            if current:
-                chunks.append(current.strip())
-            current = p + "\n\n"
-
-    if current:
-        chunks.append(current.strip())
-
-    return chunks
-
-def translate(text, src, tgt):
-    """Traduce il testo diviso in blocchi, evitando il limite dei 5000 caratteri."""
-    parts = split_text(text)
-    translated = []
-    for part in parts:
-        translated.append(GoogleTranslator(source=src, target=tgt).translate(part))
-    return "\n\n".join(translated)
-
-def process(src_dir, tgt_dir, src_lang, tgt_lang):
-    """Processa tutti i file Markdown da una cartella sorgente a una di destinazione."""
     for src in Path(src_dir).rglob("*.md"):
         rel = src.relative_to(src_dir)
         tgt = Path(tgt_dir) / rel
-        if tgt.exists():
-            continue
+        
+        # Puoi aggiungere qui il controllo `if tgt.exists(): continue` se vuoi saltare i file già tradotti.
 
-        text = src.read_text(encoding="utf-8")
-        fm, body = extract_front_matter(text)
+        try:
+            # md_translate gestisce la lettura, estrazione del front matter,
+            # protezione di codice/HTML/link e traduzione.
+            # I codici lingua devono essere in formato ISO (es. 'it', 'en').
+            translated_content = translator.translate_markdown(
+                src.read_text(encoding="utf-8"), 
+                source_language=src_lang_code, 
+                target_language=tgt_lang_code
+            )
 
-        # ✨ Traduci il front matter (solo valori stringa)
-        translated_fm = {}
-        for key, value in fm.items():
-            if isinstance(value, str):
-                try:
-                    translated_value = GoogleTranslator(source=src_lang, target=tgt_lang).translate(value)
-                    translated_fm[key] = translated_value
-                except Exception as e:
-                    print(f"Errore durante la traduzione di '{key}': {e}")
-                    translated_fm[key] = value
+            # md_translate gestisce già la riscrittura del front matter e del corpo.
+            # Dovresti solo aggiungere la tua nota di traduzione se vuoi.
+            fm, body = extract_front_matter(translated_content) # Estrai di nuovo per inserire la nota
+            
+            translation_note = ""
+            if tgt_lang_code.lower() == "en":
+                translation_note = "> ⚠️ *This content was automatically translated from Italian using a machine translation tool.*\n\n"
+            elif tgt_lang_code.lower() == "it":
+                translation_note = "> ⚠️ *Questo contenuto è stato tradotto automaticamente dall’inglese tramite un sistema di traduzione automatica.*\n\n"
             else:
-                translated_fm[key] = value  # Lascia invariato tutto il resto
+                translation_note = "> ⚠️ *This content was automatically translated.*\n\n"
 
-        trans_body = translate(body, src_lang, tgt_lang)
+            final_content = (
+                "---\n"
+                + yaml.dump(fm, allow_unicode=True, default_flow_style=False, sort_keys=False)
+                + "---\n\n"
+                + translation_note # Aggiungi la nota dopo il front matter
+                + body
+            )
 
-        # ⚠️ Nota automatica di traduzione
-        if tgt_lang.lower() == "english":
-            translation_note = "> ⚠️ *This content was automatically translated from Italian using a machine translation tool.*\n\n"
-        elif tgt_lang.lower() == "italian":
-            translation_note = "> ⚠️ *Questo contenuto è stato tradotto automaticamente dall’inglese tramite un sistema di traduzione automatica.*\n\n"
-        else:
-            translation_note = "> ⚠️ *This content was automatically translated.*\n\n"
+            tgt.parent.mkdir(parents=True, exist_ok=True)
+            tgt.write_text(final_content, encoding="utf-8")
+            print(f"Tradotto {rel} da {src_lang_code} a {tgt_lang_code} con md_translate")
 
-        content = (
-            "---\n"
-            + yaml.dump(translated_fm, allow_unicode=True)
-            + "---\n\n"
-            + translation_note
-            + trans_body
-        )
+        except Exception as e:
+            print(f"Errore durante la traduzione di {src} con md_translate: {e}")
 
-        tgt.parent.mkdir(parents=True, exist_ok=True)
-        tgt.write_text(content, encoding="utf-8")
-        print(f"Tradotto {rel} da {src_lang} a {tgt_lang}")
-
-if __name__ == "__main__":
-    process("content/it", "content/en", "italian", "english")
-    process("content/en", "content/it", "english", "italian")
+# Esempio di chiamata (dovresti mappare le tue stringhe "italian", "english" a 'it', 'en')
+# process_with_md_translate("content/it", "content/en", "it", "en")

@@ -7,7 +7,7 @@ title: Simple mapping project
 
 > ⚠️ *This content was automatically translated from Italian using a machine translation tool.*
 
-<img src = "https://res.cloudinary.com/dkvkj82k/image/upload/v1749552452/screenshot_2025-06-10_alle_12.46.47_hqonwp.png" style = "Width: 100%; Height: 30%">
+<img src="https://res.cloudinary.com/dkkvkj82k/image/upload/v1749552452/Screenshot_2025-06-10_alle_12.46.47_hqonwp.png" style="width: 100%; height: 30%" >
 <a href = "https://mappegeneral.netlify.app"> here you can use the app </a>
 
 # Map libraries
@@ -16,17 +16,17 @@ This project concerns the display of the university libraries maps, using the **
 
 ## Project structure
 
-The entire project is contained in the ** Sbamappe ** folder, which includes the HTML files for the four maps of the University's libraries. Within this folder, there are three other subcarters:
+The entire project is contained in the **Sbamappe** folder, which includes the HTML files for the four maps of the University's libraries. Within this folder, there are three other subcarters:
 
 - **dataset**
 - **script**
 - **Style**
 
-### folder ** dataset **
+### folder **dataset**
 
 This folder contains the Sottocaltella ** Paths **, which in turn includes JS files with variables (named identical to the file) to initialize the ** Geojson ** data relating to the routes. All data on points, polygons, resources and paths are extracted from these files.
 
-### Folder ** Script **
+### Folder **Script**
 
 The **script** folder contains a single file, **Maplogic.js**, which manages the logic of the maps. The main features of this file include:
 
@@ -37,7 +37,7 @@ The **script** folder contains a single file, **Maplogic.js**, which manages the
 
 The manufacturer function simplifies the initialization of the map, allowing you to insert customizations through parameters passed to the **InitializeMap** function. This approach makes the HTML code more slender and facilitates the addition of new resources by simply recalling the script in the HTML file of the new resource.
 
-### Folder ** Style **
+### Folder **Style**
 
 The ** Style ** folder contains the ** SWEX ** file, which manages the appearance of the map menu and implements the `` .hidden` class, essential for the correct functioning of the toggle on the menu together with **Maplogic.js**.
 

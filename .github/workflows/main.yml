@@ -43,8 +43,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install md-translate
 
-      - name: Run Markdown translation
-        run: md-translate content/it content/en --source-lang it --target-lang en # Esegue lo script di traduzione Markdown
+      - name: Run translation script
+        run: |
+          md-translate content/it content/en --from-lang it --to-lang en
 
       - name: Commit and push translated files
         # Poiché il token è stato passato a actions/checkout, le credenziali Git sono già impostate.

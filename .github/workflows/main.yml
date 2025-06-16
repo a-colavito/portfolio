@@ -43,9 +43,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install md-translate
 
-      - name: Run translation script
+      - name: Copy Italian content to English folder
+        run: cp -r content/it content/en
+
+      - name: Run md-translate on English folder
         run: |
-            md-translate content/it -F it -T en -P google --output content/en
+          md-translate content/en -F it -T en -P google
 
       - name: Commit and push translated files
         # Poiché il token è stato passato a actions/checkout, le credenziali Git sono già impostate.

@@ -1,6 +1,9 @@
 ---
-title: "React Website"
-description: "React site using react native"
-image: "/images/projects/react.png"
+title: React Website
+description: React site use react native
+image: /images/projects/react.png
 ---
-Contenuto dettagliato del progetto...
+
+> ⚠️ *This content was automatically translated from Italian using a machine translation tool.*
+
+Detailed content of the project...

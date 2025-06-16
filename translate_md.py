@@ -10,7 +10,7 @@ MAX_CHARS = 4999 # Il limite di Google Translate è 5000, meglio stare al sicuro
 FROZEN_TERMS = [
     "OpenStreetMap", "Leaflet", "SBAMappe", "MapLogic.js", "SBACSS", "GeoJSON",
     "BeFreeCampus", "CAD", "Flutter", "React Native", "Google Maps", "API",
-    "Politecnico di Bari", "Poliba", "Ateneo"
+    ""Politecnico di Bari"", ""Poliba"", ""Ateneo""
 ]
 
 def extract_front_matter(text):
@@ -48,13 +48,12 @@ def split_text(text, max_chars=MAX_CHARS):
 
 def protect_and_translate(text, src_lang, tgt_lang):
     """
-    Protegge URLs, HTML tags, link Markdown e termini specifici dalla traduzione,
+    Protegge URLs, HTML tags, link Markdown, inline formatting e termini specifici dalla traduzione,
     quindi traduce il testo e ripristina gli elementi protetti.
     """
     protected_map = {}
     placeholder_idx = 0
 
-    # Funzione helper per generare placeholder unici
     def generate_placeholder(original_content):
         nonlocal placeholder_idx
         # Usiamo un formato più generico per i placeholder
@@ -65,29 +64,31 @@ def protect_and_translate(text, src_lang, tgt_lang):
 
     # L'ordine delle operazioni è importante: prima i pattern più specifici/annidati
 
-    # 1. Proteggi i tag HTML completi (es. <img ...>, <a ...>)
-    # Questo è fondamentale per preservare attributi come 'src', 'style', 'href', ecc.
-    # e impedire la traduzione indesiderata al loro interno o la modifica della sintassi.
-    text = re.sub(r'<[^>]+>', lambda m: generate_placeholder(m.group(0)), text)
+    # 1. Proteggi il formato Markdown inline (bold, italic, strikethrough)
+    # Questi spesso causano problemi di spaziatura e capitalizzazione.
+    # Uso un pattern più inclusivo per catturare la formattazione inline
+    # per evitare che gli asterischi/underscore vengano trattati come parole separate.
+    # Non-greedy matches `*?`
+    # ( bold **...** | italic *...* | italic _..._ | strikethrough ~~...~~ )
+    text = re.sub(r'(\*\*.*?\*\*|\*.*?\*|_.*?_|~~.*?~~)', lambda m: generate_placeholder(m.group(0)), text)
 
-    # 2. Proteggi i link e le immagini Markdown (es. ![alt](url), [testo](url))
+
+    # 2. Proteggi i tag HTML completi (es. <img ...>, <a ...>).
+    # Uso .+? (non-greedy) per assicurare che corrisponda al tag più vicino e non a più tag.
+    # Questo dovrebbe coprire la problematica degli attributi style.
+    text = re.sub(r'<.+?>', lambda m: generate_placeholder(m.group(0)), text)
+
+    # 3. Proteggi i link e le immagini Markdown (es. ![alt](url), [testo](url))
     # Questo include le URL al loro interno.
-    # Deve essere dopo i tag HTML, nel caso in cui ci sia HTML grezzo all'interno della sintassi Markdown.
-    # La regex cattura l'intera struttura `![...]()` o `[...]()`.
     text = re.sub(r'(!?\[.*?\]\s*\([^\s)]*\s*\))', lambda m: generate_placeholder(m.group(0)), text)
 
-    # 3. Proteggi i link mailto: (se non sono già stati catturati da un link Markdown protetto)
+    # 4. Proteggi i link mailto:
     text = re.sub(r'\b(mailto:[^\s)]+)\b', lambda m: generate_placeholder(m.group(0)), text)
 
-    # 4. Proteggi i termini "congelati" specifici (es. nomi propri, termini tecnici).
-    # Ordina per lunghezza decrescente per garantire che i termini più lunghi vengano
-    # abbinati prima dei loro sottostringhe (es. "Google Maps" prima di "Google").
+    # 5. Proteggi i termini "congelati" specifici (es. nomi propri, termini tecnici).
     for term in sorted(FROZEN_TERMS, key=len, reverse=True):
-        # Usa i limiti di parola \b per abbinare solo parole intere.
-        # re.escape() gestisce caratteri speciali nel termine.
-        # re.IGNORECASE per una corrispondenza senza distinzione tra maiuscole e minuscole.
-        # Il callback `generate_placeholder` sostituirà il termine con il placeholder,
-        # e `protected_map` memorizzerà il termine originale (con la sua esatta capitalizzazione).
+        # Utilizzo \b per limiti di parola per evitare di sostituire parti di parole.
+        # re.escape per gestire caratteri speciali nel termine.
         text = re.sub(r'\b' + re.escape(term) + r'\b', lambda m: generate_placeholder(m.group(0)), text, flags=re.IGNORECASE)
 
     # Traduci il testo con i placeholder

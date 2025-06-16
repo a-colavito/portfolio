@@ -40,11 +40,11 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          python -m pip install --upgrade pip # Aggiorna pip
-          pip install deep-translator pyyaml # Installa le dipendenze Python per la traduzione
+          python -m pip install --upgrade pip
+          pip install md-translate
 
-      - name: Run translation script
-        run: python translate_md.py # Esegue lo script di traduzione Markdown
+      - name: Run Markdown translation
+        run: md-translate content/it content/en --source-lang it --target-lang en # Esegue lo script di traduzione Markdown
 
       - name: Commit and push translated files
         # Poiché il token è stato passato a actions/checkout, le credenziali Git sono già impostate.

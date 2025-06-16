@@ -1,14 +1,12 @@
-name: Translate Content
+name: Translate on gh-pages push
 
 on:
   push:
-    paths:
-      - 'content/it/**'
-      - '.github/workflows/translate.yml'
+    branches: [gh-pages]
   workflow_dispatch:
 
 jobs:
-  build:
+  translate:
     runs-on: ubuntu-latest
 
     steps:

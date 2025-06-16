@@ -44,11 +44,14 @@ jobs:
           pip install md-translate
 
       - name: Copy Italian content to English folder
-        run: cp -r content/it content/en
+        run: |
+         mkdir -p content/en # Assicurati che content/en esista prima di copiare
+         cp -r content/it/* content/en/ # Copia il contenuto, non la cartella 'it' al suo interno
 
+    # Il tuo passo di esecuzione di md-translate
       - name: Run md-translate on English folder
         run: |
-          md-translate content/en -F it -T en -P google
+          md-translate content/en -F it -T en -P google --processes 1
 
       - name: Commit and push translated files
         # Poiché il token è stato passato a actions/checkout, le credenziali Git sono già impostate.

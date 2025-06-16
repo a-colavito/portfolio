@@ -11,14 +11,14 @@ Not only therefore a portfolio site but a hybrid space where you can understand 
 The site is simple and essential, without unnecessary complications, modular and easily updated, all thanks to an efficient mix of __html_tag_2__hugo & Papermod </a>.
 For any curiosity, project proposal or exchange of ideas, do not exist at __html_tag_3___contract me! </a> (I swear I also read the spam folder)
 
-### here you can hear my favorite playlist
-{{<Spotify URL = https: //open.spotify.com/playlist/0pjo67V7HS4PEXAQOLJYH0
- Usetheme = False
- Width = 100%
- Height = 25vh
- Class = My-Class
- ID = My-ID
- Loading = Eager>}}
+### Qui puoi sentire la mia playlist preferita
+{{< spotify url=https://open.spotify.com/playlist/0PJO67v7Hs4PExAqOlJyH0
+ useTheme=false
+ width=100%
+ height=25vh
+ class=my-class
+ id=my-id
+ loading=eager >}}
 
-### EEE.... one of my favorite podcasts
-{{<YouTube ikrwzswwowi>}}
+### eee.... uno dei miei podcast preferiti
+{{< youtube ikRWZSwwoWI >}}

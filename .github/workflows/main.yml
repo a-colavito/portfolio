@@ -45,7 +45,7 @@ jobs:
 
       - name: Run translation script
         run: |
-           md-translate content/it --output content/en --from-lang it --to-lang en --service google
+            md-translate content/it -F it -T en -P google --output content/en
 
       - name: Commit and push translated files
         # Poiché il token è stato passato a actions/checkout, le credenziali Git sono già impostate.

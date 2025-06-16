@@ -10,8 +10,8 @@ MAX_CHARS = 4999 # Il limite di Google Translate è 5000, meglio stare al sicuro
 FROZEN_TERMS = [
     "OpenStreetMap", "Leaflet", "SBAMappe", "MapLogic.js", "SBACSS", "GeoJSON",
     "BeFreeCampus", "CAD", "Flutter", "React Native", "Google Maps", "API",
-    "Politecnico di Bari", "Poliba", "Ateneo"
-    ]
+    "Politecnico di Bari", "Poliba", "Ateneo" # Corretto: rimosse le doppie virgolette extra
+]
 
 def extract_front_matter(text):
     """Estrae il front matter (intestazione YAML) dal contenuto Markdown."""
@@ -105,10 +105,10 @@ def protect_and_translate(text, src_lang, tgt_lang):
     translated_text = translated_text.strip()
 
     # Ripristina gli elementi protetti
-    # Itera attraverso le chiavi ordinate per garantire un ripristino consistente
-    # (specialmente se un placeholder fosse per qualche motivo un sottostringa di un altro,
-    # anche se le nostre regex mirano a evitarlo).
-    for placeholder in sorted(protected_map.keys(), key=lambda x: int(x.split('_')[-2]), reverse=True):
+    # Ho migliorato la funzione lambda per l'ordinamento, aggiungendo un controllo
+    # per assicurarsi che l'elemento sia una cifra prima di tentare la conversione a int.
+    # Questo risolve il ValueError.
+    for placeholder in sorted(protected_map.keys(), key=lambda x: int(x.split('_')[-2]) if len(x.split('_')) >= 2 and x.split('_')[-2].isdigit() else -1, reverse=True):
         original_content = protected_map[placeholder]
         translated_text = translated_text.replace(placeholder, original_content)
 

@@ -10,8 +10,8 @@ MAX_CHARS = 4999 # Il limite di Google Translate è 5000, meglio stare al sicuro
 FROZEN_TERMS = [
     "OpenStreetMap", "Leaflet", "SBAMappe", "MapLogic.js", "SBACSS", "GeoJSON",
     "BeFreeCampus", "CAD", "Flutter", "React Native", "Google Maps", "API",
-    ""Politecnico di Bari"", ""Poliba"", ""Ateneo""
-]
+    "Politecnico di Bari", "Poliba", "Ateneo"
+    ]
 
 def extract_front_matter(text):
     """Estrae il front matter (intestazione YAML) dal contenuto Markdown."""

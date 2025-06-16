@@ -2,11 +2,11 @@ import os
 from pathlib import Path
 from deep_translator import GoogleTranslator
 import yaml
-import textwrap
 
 MAX_CHARS = 4999  # Google Translate limit is 5000, stay safe
 
 def extract_front_matter(text):
+    """Estrae il front matter (intestazione YAML) dal contenuto Markdown."""
     if text.startswith("---"):
         parts = text.split("---", 2)
         fm = yaml.safe_load(parts[1])
@@ -15,7 +15,7 @@ def extract_front_matter(text):
     return {}, text
 
 def split_text(text, max_chars=MAX_CHARS):
-    # Mantieni paragrafi interi (non spezzare in mezzo a un paragrafo)
+    """Divide il testo in blocchi più piccoli rispettando i paragrafi."""
     paragraphs = text.split("\n\n")
     chunks = []
     current = ""
@@ -34,6 +34,7 @@ def split_text(text, max_chars=MAX_CHARS):
     return chunks
 
 def translate(text, src, tgt):
+    """Traduce il testo diviso in blocchi, evitando il limite dei 5000 caratteri."""
     parts = split_text(text)
     translated = []
     for part in parts:
@@ -41,6 +42,7 @@ def translate(text, src, tgt):
     return "\n\n".join(translated)
 
 def process(src_dir, tgt_dir, src_lang, tgt_lang):
+    """Processa tutti i file Markdown da una cartella sorgente a una di destinazione."""
     for src in Path(src_dir).rglob("*.md"):
         rel = src.relative_to(src_dir)
         tgt = Path(tgt_dir) / rel
@@ -50,7 +52,7 @@ def process(src_dir, tgt_dir, src_lang, tgt_lang):
         text = src.read_text(encoding="utf-8")
         fm, body = extract_front_matter(text)
 
-        # ✨ Traduci i valori del front matter se sono stringhe
+        # ✨ Traduci il front matter (solo valori stringa)
         translated_fm = {}
         for key, value in fm.items():
             if isinstance(value, str):
@@ -61,11 +63,26 @@ def process(src_dir, tgt_dir, src_lang, tgt_lang):
                     print(f"Errore durante la traduzione di '{key}': {e}")
                     translated_fm[key] = value
             else:
-                translated_fm[key] = value  # Mantieni tutto il resto invariato
+                translated_fm[key] = value  # Lascia invariato tutto il resto
 
         trans_body = translate(body, src_lang, tgt_lang)
 
-        content = "---\n" + yaml.dump(translated_fm, allow_unicode=True) + "---\n\n" + trans_body
+        # ⚠️ Nota automatica di traduzione
+        if tgt_lang.lower() == "english":
+            translation_note = "> ⚠️ *This content was automatically translated from Italian using a machine translation tool.*\n\n"
+        elif tgt_lang.lower() == "italian":
+            translation_note = "> ⚠️ *Questo contenuto è stato tradotto automaticamente dall’inglese tramite un sistema di traduzione automatica.*\n\n"
+        else:
+            translation_note = "> ⚠️ *This content was automatically translated.*\n\n"
+
+        content = (
+            "---\n"
+            + yaml.dump(translated_fm, allow_unicode=True)
+            + "---\n\n"
+            + translation_note
+            + trans_body
+        )
+
         tgt.parent.mkdir(parents=True, exist_ok=True)
         tgt.write_text(content, encoding="utf-8")
         print(f"Tradotto {rel} da {src_lang} a {tgt_lang}")

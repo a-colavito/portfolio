@@ -1,0 +1,26 @@
+name: Traduci Markdown
+
+on:
+  push:
+    branches: [gh-pages]
+
+jobs:
+  traduci:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with: python-version: '3.11'
+    - name: Install
+      run: pip install deep-translator pyyaml
+    - name: Translate
+      run: python translate_md.py
+    - name: Commit traduzioni
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add content/it content/en
+        git commit -m "Aggiornamento traduzioni automatiche" || echo "No changes"
+        git push

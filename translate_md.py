@@ -41,7 +41,6 @@ def split_text(text, max_chars=MAX_CHARS):
                 chunks.append(current.strip())
             current = p + "\n\n"
 
-    # Aggiungi l'ultimo chunk se non è vuoto
     if current:
         chunks.append(current.strip())
 
@@ -57,8 +56,8 @@ def protect_and_translate(text, src_lang, tgt_lang):
 
     def generate_placeholder(original_content):
         nonlocal placeholder_idx
-        # Usiamo un formato più generico per i placeholder e aggiungiamo un UUID per massima unicità
-        placeholder = f"__PROTECTED_ITEM_{placeholder_idx}_{uuid.uuid4().hex}__"
+        # Usiamo un formato estremamente unico con caratteri speciali improbabili da tradurre
+        placeholder = f"@@@PROTECTED_ITEM__{placeholder_idx}__$${uuid.uuid4().hex}@@@"
         protected_map[placeholder] = original_content
         placeholder_idx += 1
         return placeholder
@@ -88,11 +87,12 @@ def protect_and_translate(text, src_lang, tgt_lang):
     # Ordina per lunghezza decrescente per garantire che i termini più lunghi vengano
     # abbinati prima dei loro sottostringhe (es. "Google Maps" prima di "Google").
     for term in sorted(FROZEN_TERMS, key=len, reverse=True):
-        # Rimosso \b per essere più aggressivo nella protezione di termini che potrebbero non essere
-        # strettamente "parole" secondo regex o che sono adiacenti a caratteri speciali.
-        # re.escape() gestisce caratteri speciali nel termine.
-        # flags=re.IGNORECASE per una corrispondenza senza distinzione tra maiuscole e minuscole.
-        text = re.sub(re.escape(term), lambda m: generate_placeholder(m.group(0)), text, flags=re.IGNORECASE)
+        # Utilizzo re.escape per gestire caratteri speciali nel termine.
+        # Ho ripristinato l'uso di \b (limiti di parola) per evitare sostituzioni parziali di parole.
+        # Questo è un compromesso: se un termine è "SBACSS" e appare in "SBACSS.js", \b non lo catturerà.
+        # Se è necessario catturare "SBACSS" in "SBACSS.js", dovremmo rimuovere \b ma fare attenzione ai falsi positivi.
+        # Per ora, manteniamo \b per prevenire la corruzione di parole.
+        text = re.sub(r'\b' + re.escape(term) + r'\b', lambda m: generate_placeholder(m.group(0)), text, flags=re.IGNORECASE)
 
     # Traduci il testo con i placeholder
     translated_text = ""
@@ -109,8 +109,11 @@ def protect_and_translate(text, src_lang, tgt_lang):
 
     # Ripristina gli elementi protetti
     # Ordina i placeholder per l'indice numerico decrescente per un ripristino sicuro
-    # Il controllo `isdigit()` previene `ValueError`. `x.split('_')[2]` è l'indice numerico.
-    for placeholder in sorted(protected_map.keys(), key=lambda x: int(x.split('_')[2]) if len(x.split('_')) > 2 and x.split('_')[2].isdigit() else -1, reverse=True):
+    # Il controllo `isdigit()` previene `ValueError`. `x.split('__')[1]` ora è l'indice numerico.
+    # L'indice numerico si trova tra il primo e il secondo `__` nel nuovo formato `@@@PROTECTED_ITEM__{idx}__$${uuid}@@@`
+    for placeholder in sorted(protected_map.keys(),
+                              key=lambda x: int(x.split('__')[1]) if len(x.split('__')) > 1 and x.split('__')[1].isdigit() else -1,
+                              reverse=True):
         original_content = protected_map[placeholder]
         translated_text = translated_text.replace(placeholder, original_content)
 

@@ -1,5 +1,6 @@
 import os
 import re
+import uuid # Importa il modulo uuid
 from pathlib import Path
 from deep_translator import GoogleTranslator
 import yaml
@@ -10,7 +11,7 @@ MAX_CHARS = 4999 # Il limite di Google Translate è 5000, meglio stare al sicuro
 FROZEN_TERMS = [
     "OpenStreetMap", "Leaflet", "SBAMappe", "MapLogic.js", "SBACSS", "GeoJSON",
     "BeFreeCampus", "CAD", "Flutter", "React Native", "Google Maps", "API",
-    "Politecnico di Bari", "Poliba", "Ateneo" # Corretto: rimosse le doppie virgolette extra
+    "Politecnico di Bari", "Poliba", "Ateneo"
 ]
 
 def extract_front_matter(text):
@@ -56,27 +57,25 @@ def protect_and_translate(text, src_lang, tgt_lang):
 
     def generate_placeholder(original_content):
         nonlocal placeholder_idx
-        # Usiamo un formato più generico per i placeholder
-        placeholder = f"__PROTECTED_ITEM_{placeholder_idx}__"
+        # Usiamo un formato più generico per i placeholder e aggiungiamo un UUID per massima unicità
+        placeholder = f"__PROTECTED_ITEM_{placeholder_idx}_{uuid.uuid4().hex}__"
         protected_map[placeholder] = original_content
         placeholder_idx += 1
         return placeholder
 
     # L'ordine delle operazioni è importante: prima i pattern più specifici/annidati
 
-    # 1. Proteggi il formato Markdown inline (bold, italic, strikethrough)
+    # 1. Proteggi i tag HTML completi (es. <img ...>, <a ...>).
+    # Questo è essenziale per preservare attributi come 'src', 'style', 'href', ecc.
+    # Uso .+? (non-greedy) per assicurare che corrisponda al tag più vicino e non a più tag.
+    text = re.sub(r'<.+?>', lambda m: generate_placeholder(m.group(0)), text)
+
+    # 2. Proteggi il formato Markdown inline (bold, italic, strikethrough)
     # Questi spesso causano problemi di spaziatura e capitalizzazione.
     # Uso un pattern più inclusivo per catturare la formattazione inline
     # per evitare che gli asterischi/underscore vengano trattati come parole separate.
-    # Non-greedy matches `*?`
     # ( bold **...** | italic *...* | italic _..._ | strikethrough ~~...~~ )
     text = re.sub(r'(\*\*.*?\*\*|\*.*?\*|_.*?_|~~.*?~~)', lambda m: generate_placeholder(m.group(0)), text)
-
-
-    # 2. Proteggi i tag HTML completi (es. <img ...>, <a ...>).
-    # Uso .+? (non-greedy) per assicurare che corrisponda al tag più vicino e non a più tag.
-    # Questo dovrebbe coprire la problematica degli attributi style.
-    text = re.sub(r'<.+?>', lambda m: generate_placeholder(m.group(0)), text)
 
     # 3. Proteggi i link e le immagini Markdown (es. ![alt](url), [testo](url))
     # Questo include le URL al loro interno.
@@ -86,10 +85,14 @@ def protect_and_translate(text, src_lang, tgt_lang):
     text = re.sub(r'\b(mailto:[^\s)]+)\b', lambda m: generate_placeholder(m.group(0)), text)
 
     # 5. Proteggi i termini "congelati" specifici (es. nomi propri, termini tecnici).
+    # Ordina per lunghezza decrescente per garantire che i termini più lunghi vengano
+    # abbinati prima dei loro sottostringhe (es. "Google Maps" prima di "Google").
     for term in sorted(FROZEN_TERMS, key=len, reverse=True):
-        # Utilizzo \b per limiti di parola per evitare di sostituire parti di parole.
-        # re.escape per gestire caratteri speciali nel termine.
-        text = re.sub(r'\b' + re.escape(term) + r'\b', lambda m: generate_placeholder(m.group(0)), text, flags=re.IGNORECASE)
+        # Rimosso \b per essere più aggressivo nella protezione di termini che potrebbero non essere
+        # strettamente "parole" secondo regex o che sono adiacenti a caratteri speciali.
+        # re.escape() gestisce caratteri speciali nel termine.
+        # flags=re.IGNORECASE per una corrispondenza senza distinzione tra maiuscole e minuscole.
+        text = re.sub(re.escape(term), lambda m: generate_placeholder(m.group(0)), text, flags=re.IGNORECASE)
 
     # Traduci il testo con i placeholder
     translated_text = ""
@@ -105,10 +108,9 @@ def protect_and_translate(text, src_lang, tgt_lang):
     translated_text = translated_text.strip()
 
     # Ripristina gli elementi protetti
-    # Ho migliorato la funzione lambda per l'ordinamento, aggiungendo un controllo
-    # per assicurarsi che l'elemento sia una cifra prima di tentare la conversione a int.
-    # Questo risolve il ValueError.
-    for placeholder in sorted(protected_map.keys(), key=lambda x: int(x.split('_')[-2]) if len(x.split('_')) >= 2 and x.split('_')[-2].isdigit() else -1, reverse=True):
+    # Ordina i placeholder per l'indice numerico decrescente per un ripristino sicuro
+    # Il controllo `isdigit()` previene `ValueError`. `x.split('_')[2]` è l'indice numerico.
+    for placeholder in sorted(protected_map.keys(), key=lambda x: int(x.split('_')[2]) if len(x.split('_')) > 2 and x.split('_')[2].isdigit() else -1, reverse=True):
         original_content = protected_map[placeholder]
         translated_text = translated_text.replace(placeholder, original_content)
 

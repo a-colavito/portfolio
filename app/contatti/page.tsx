@@ -55,7 +55,7 @@ export default function ContattiPage() {
         Hai un'idea da condividere, una proposta di collaborazione o semplicemente vuoi fare due chiacchiere? Compila il form qui sotto, e sarò felice di sentirti!
       </p>
 
-      <form onSubmit={handleSubmit} className="space-y-4 max-w-lg">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="name" className="block text-sm font-medium mb-2">Nome:</label>
           <input type="text" id="name" name="name" required className="w-full px-4 py-2 border border-neutral-200 dark:border-neutral-800 rounded-lg bg-white dark:bg-black focus:outline-none focus:ring-2 focus:ring-neutral-400 dark:focus:ring-neutral-600" />

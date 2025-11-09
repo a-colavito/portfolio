@@ -45,15 +45,15 @@ export default function ContattiPage() {
 
   return (
     <section>
-      <h1 className="font-semibold text-xl sm:text-2xl mb-6 sm:mb-8 tracking-tighter">Contatti</h1>
+      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Contatti</h1>
       
-      <p className="mb-4 text-sm sm:text-base leading-relaxed">
+      <p className="mb-4 leading-relaxed">
         Ciao! Sono Adolfo, classe '97, diplomato al classico e attualmente studente
         presso la facoltà di Ingegneria Informatica del Politecnico di Bari, ma queste cose
         potrai leggerle nel <a href="https://res.cloudinary.com/dkkvkj82k/image/upload/v1749566768/CV_it_dby0co.pdf" target="_blank" rel="noopener noreferrer" className="underline break-words">curriculum</a>, quindi saltiamo alla parte meno noiosa ecco una lista di cose che mi piacciono:
       </p>
 
-      <ul className="list-disc list-inside mb-6 space-y-1 text-sm sm:text-base">
+      <ul className="list-disc list-inside mb-6 space-y-1">
         <li>I gatti</li>
         <li>Correre</li>
         <li>I Radiohead</li>

@@ -47,11 +47,6 @@ html {
   min-width: 360px;
 }
 
-/* Mobile-friendly prose adjustments */
-.prose {
-  @apply max-w-none;
-}
-
 .prose .anchor {
   @apply absolute invisible no-underline;
 
@@ -68,8 +63,6 @@ html {
 
 .prose a {
   @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
 .prose .anchor:after {
@@ -82,13 +75,11 @@ html {
 }
 
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-xs sm:text-sm;
-  max-width: 100%;
+  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
 }
 
 .prose code {
-  @apply px-1 py-0.5 rounded-lg text-xs sm:text-sm;
-  word-wrap: break-word;
+  @apply px-1 py-0.5 rounded-lg;
 }
 
 .prose pre code {
@@ -103,27 +94,27 @@ html {
 
 .prose img {
   /* Don't apply styles to next/image */
-  @apply m-0 max-w-full h-auto;
+  @apply m-0;
 }
 
 .prose p {
-  @apply my-3 sm:my-4 text-neutral-800 dark:text-neutral-200 text-sm sm:text-base leading-relaxed;
+  @apply my-4 text-neutral-800 dark:text-neutral-200;
 }
 
 .prose h1 {
-  @apply text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
 }
 
 .prose h2 {
-  @apply text-lg sm:text-xl lg:text-2xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-xl font-medium tracking-tight mt-6 mb-2;
 }
 
 .prose h3 {
-  @apply text-base sm:text-lg lg:text-xl font-medium tracking-tight mt-5 mb-2;
+  @apply text-xl font-medium tracking-tight mt-6 mb-2;
 }
 
 .prose h4 {
-  @apply text-base sm:text-lg font-medium tracking-tight mt-4 mb-2;
+  @apply text-lg font-medium tracking-tight mt-6 mb-2;
 }
 
 .prose strong {
@@ -131,19 +122,11 @@ html {
 }
 
 .prose ul {
-  @apply list-disc pl-5 sm:pl-6 text-sm sm:text-base;
+  @apply list-disc pl-6;
 }
 
 .prose ol {
-  @apply list-decimal pl-5 sm:pl-6 text-sm sm:text-base;
-}
-
-.prose li {
-  @apply my-1 sm:my-1.5;
-}
-
-.prose blockquote {
-  @apply border-l-2 sm:border-l-4 pl-3 sm:pl-4 italic text-sm sm:text-base;
+  @apply list-decimal pl-6;
 }
 
 .prose > :first-child {
@@ -171,63 +154,11 @@ input[type='email'] {
 
 table {
   display: block;
-  max-width: 100%;
+  max-width: fit-content;
   overflow-x: auto;
   white-space: nowrap;
-  @apply text-xs sm:text-sm;
 }
 
 .title {
   text-wrap: balance;
-}
-
-/* Ottimizzazioni per schermi molto piccoli (iPhone 12 mini, SE, ecc.) */
-@media (max-width: 390px) {
-  html {
-    font-size: 15px; /* Riduce leggermente la base font size */
-  }
-  
-  .prose pre {
-    margin-left: -1rem;
-    margin-right: -1rem;
-    border-radius: 0;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .prose code {
-    font-size: 0.7rem;
-  }
-}
-
-/* Previeni zoom su input focus in iOS */
-@media screen and (max-width: 768px) {
-  input[type='text'],
-  input[type='email'],
-  textarea,
-  select {
-    font-size: 16px !important; /* iOS non fa zoom se font-size >= 16px */
-  }
-}
-
-/* Smooth scroll per l'intera pagina */
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Previeni il bounce effect su iOS */
-body {
-  overscroll-behavior-y: none;
-}
-
-/* Nascondi scrollbar ma mantieni funzionalità */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
 }

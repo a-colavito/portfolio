@@ -9,7 +9,7 @@ export default function Page() {
       <div className="mb-20">
         <Link href="/contatti" className="block">
           <div className="p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-gradient-to-br from-neutral-50 to-white dark:from-neutral-900 dark:to-black hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-300 cursor-pointer group">
-            <div className="flex gap-6 items-start">
+            <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
               <div className="relative aspect-square w-32 rounded-full overflow-hidden flex-shrink-0 border border-neutral-200 dark:border-neutral-700 group-hover:border-neutral-400 dark:group-hover:border-neutral-500 transition-colors">
                 <Image
                   src="https://res.cloudinary.com/dkkvkj82k/image/upload/v1762627002/7IV01608_hmvipl.jpg"
@@ -21,7 +21,7 @@ export default function Page() {
                 />
               </div>
               
-              <div className="flex-1">
+              <div className="flex-1 text-center sm:text-left">
                 <h1 className="text-2xl font-bold tracking-tight mb-2">
                   Adolfo Colavito
                 </h1>

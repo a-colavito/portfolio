@@ -1,7 +1,61 @@
 ---
-title: 'Il web moderno è un complicato'
+title: 'Il web moderno è complicato'
 publishedAt: '2025-11-09'
 summary: 'Anche creare siti statici diventa complesso se si vuole stare al passo con i tempi, questo però non è del tutto un male'
 ---
+<figure>
+  <Image 
+    src="https://res.cloudinary.com/dkkvkj82k/image/upload/v1722673666/cld-sample-5.jpg"
+    alt="Esempio di complessità moderna" 
+    width={800} 
+    height={600} 
+  />
+  <figcaption>La didascalia dell'immagine va qui</figcaption>
+</figure>
+
+Ricordo ancora quando per creare un sito bastava aprire il Blocco Note, scrivere un po' di HTML e caricarlo via FTP. Erano i tempi del Web 1.0: pagine statiche, tabelle per il layout, GIF animate e contatori di visite. Semplice, immediato, ma anche tremendamente limitato.
+
+## Dal Web 1.0 al Web 2.0
+
+Con l'arrivo del Web 2.0 tutto è cambiato. Non più solo pagine da leggere, ma applicazioni interattive dove gli utenti potevano contribuire con contenuti. JavaScript è passato da linguaggio per "effetti speciali" a pilastro dello sviluppo web. jQuery ha democratizzato la manipolazione del DOM, AJAX ha reso possibile aggiornare le pagine senza ricaricarle.
+
+Ma con la complessità crescente sono arrivati i problemi: codice spaghetti, manutenzione difficile, bug ovunque. Il browser non era più un semplice visualizzatore di documenti, ma un vero e proprio ambiente di esecuzione.
+
+## L'era dei framework moderni
+
+Poi sono arrivati i framework: Angular, React, Vue. Hanno portato ordine nel caos, introducendo concetti come componenti riutilizzabili, virtual DOM, reactive programming. Ma hanno anche aggiunto layer su layer di complessità.
+
+Oggi per creare anche un semplice blog statico usi:
+- Un framework (Next.js, Gatsby, Astro)
+- Un sistema di build (Webpack, Vite, Turbopack)
+- Un preprocessor CSS (Tailwind, Sass, CSS-in-JS)
+- TypeScript per type safety
+- Un sistema di routing
+- Ottimizzazioni per performance (code splitting, lazy loading)
+
+## Vale davvero la pena?
+
+La domanda sorge spontanea: ne vale davvero la pena? Per un blog come questo, non sarebbe bastato un generatore statico come Jekyll o Hugo?
+
+La risposta, sorprendentemente, è sì. Questa complessità porta con sé vantaggi concreti:
+
+**Performance**: Il sito che stai leggendo è pre-renderizzato staticamente, ottimizzato automaticamente, con code splitting e lazy loading. Carica in millisecondi.
+
+**Developer Experience**: TypeScript mi avvisa degli errori prima ancora di salvare il file. Hot reload mi mostra le modifiche istantaneamente. I componenti React rendono il codice riutilizzabile e manutenibile.
+
+**Scalabilità**: Posso iniziare con un blog statico e aggiungere features dinamiche quando serve, senza riscrivere tutto.
+
+**Ecosistema**: Accesso a migliaia di librerie, plugin, strumenti. Se devo aggiungere una feature, probabilmente qualcuno l'ha già implementata.
+
+## Il compromesso necessario
+
+Il punto non è tornare all'HTML puro o abbracciare ciecamente ogni novità. È trovare il giusto equilibrio. Usare gli strumenti moderni dove hanno senso, senza cadere nella trap dell'over-engineering.
+
+Per questo blog ho scelto Next.js: mi dà la semplicità dello statico con la potenza del dinamico quando serve. MDX mi permette di scrivere in Markdown ma usare componenti React dove necessario. Tailwind mi fa scrivere CSS velocemente senza creare un casino di classi custom.
+
+Il web moderno è complesso, sì. Ma è anche più potente, accessibile e performante di quanto sia mai stato. E forse, in fondo, un po' di complessità è il prezzo da pagare per avere siti che funzionano bene su qualsiasi dispositivo, che si caricano istantaneamente, che sono accessibili a tutti.
+
+L'importante è sapere perché stiamo usando questi strumenti, e non usarli solo perché "tutti lo fanno".
+
 
 

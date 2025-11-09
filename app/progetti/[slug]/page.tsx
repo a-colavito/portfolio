@@ -83,7 +83,7 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
       <h1 className="title font-semibold text-2xl tracking-tighter">
         {project.metadata.title}
       </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
+      <div className="flex justify-between items-center mt-2 mb-2 text-sm">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {new Date(project.metadata.publishedAt).toLocaleDateString('it-IT', {
             year: 'numeric',
@@ -101,6 +101,9 @@ export default async function Project({ params }: { params: Promise<{ slug: stri
           </a>
         )}
       </div>
+      <p className="text-neutral-600 dark:text-neutral-400 mb-4">
+        {project.metadata.summary}
+      </p>
       <div className="flex flex-wrap gap-2 mb-8">
         {project.metadata.technologies.split(',').map((tech, i) => (
           <span

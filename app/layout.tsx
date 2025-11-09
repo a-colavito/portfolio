@@ -73,13 +73,13 @@ export default function RootLayout({
       <body className="antialiased bg-white dark:bg-black text-black dark:text-white transition-colors duration-200">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex flex-col min-h-screen">
-            <div className="max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto px-4 md:px-6 lg:px-8 py-8 flex-grow w-full">
+            <div className="max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 flex-grow w-full">
               <Navbar />
-              <main className="mt-6">
+              <main className="mt-4 sm:mt-6">
                 {children}
               </main>
             </div>
-            <div className="max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto px-4 md:px-6 lg:px-8 w-full">
+            <div className="max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
               <Footer />
             </div>
           </div>

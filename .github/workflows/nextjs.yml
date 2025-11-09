@@ -2,7 +2,7 @@ name: Deploy Next.js to GitHub Pages
 
 on:
   push:
-    branches: ["gh-pages"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -21,26 +21,38 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Setup Node
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 9
+          run_install: false
+      
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-      
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-      
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        with:
-          static_site_generator: next
+          node-version: 20
+          cache: 'pnpm'
       
       - name: Install dependencies
         run: pnpm install
       
+      - name: Setup Pages
+        id: setup_pages
+        uses: actions/configure-pages@v5
+      
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
+      
       - name: Build with Next.js
         run: pnpm build
+        env:
+          PAGES_BASE_PATH: ${{ steps.setup_pages.outputs.base_path }}
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

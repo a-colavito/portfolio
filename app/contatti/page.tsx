@@ -42,7 +42,7 @@ export default function ContattiPage() {
       <p className="mb-4 leading-relaxed">
         Ciao! Sono Adolfo, classe '97, diplomato al classico e attualmente studente
         presso la facoltà di Ingegneria Informatica del Politecnico di Bari, ma queste cose
-        potrai leggerle nel <a href="https://res.cloudinary.com/dkkvkj82k/image/upload/v1749566768/CV_it_dby0co.pdf" target="_blank" rel="noopener noreferrer" className="underline break-words">curriculum</a>, quindi saltiamo alla parte meno noiosa ecco una lista di cose che mi piacciono:
+        potrai leggerle nel <a href="https://res.cloudinary.com/dkkvkj82k/image/upload/v1749566768/CV_it_dby0co.pdf" target="_blank" rel="noopener noreferrer" className="underline break-words text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors">curriculum</a>, quindi saltiamo alla parte meno noiosa ecco una lista di cose che mi piacciono:
       </p>
 
       <ul className="list-disc list-inside mb-6 space-y-1">

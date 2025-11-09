@@ -1,10 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: NextRequest) {
   try {
+    // Verifica che le variabili d'ambiente siano presenti
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY non configurata');
+      return NextResponse.json(
+        { error: 'Configurazione server mancante' },
+        { status: 500 }
+      );
+    }
+
+    if (!process.env.RESEND_EMAIL) {
+      console.error('RESEND_EMAIL non configurata');
+      return NextResponse.json(
+        { error: 'Configurazione server mancante' },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { name, email, message } = await request.json();
 
     // Validazione base
@@ -16,9 +32,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Invio email tramite Resend
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: process.env.RESEND_EMAIL!,
+      to: process.env.RESEND_EMAIL,
       replyTo: email,
       subject: `Nuovo messaggio da ${name}`,
       html: `
@@ -30,6 +46,15 @@ export async function POST(request: NextRequest) {
       `,
     });
 
+    if (error) {
+      console.error('Errore Resend:', error);
+      return NextResponse.json(
+        { error: 'Errore durante l\'invio del messaggio', details: error },
+        { status: 500 }
+      );
+    }
+
+    console.log('Email inviata con successo:', data);
     return NextResponse.json(
       { success: true, message: 'Messaggio inviato con successo!' },
       { status: 200 }
@@ -37,7 +62,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Errore invio email:', error);
     return NextResponse.json(
-      { error: 'Errore durante l\'invio del messaggio' },
+      { error: 'Errore durante l\'invio del messaggio', details: String(error) },
       { status: 500 }
     );
   }

@@ -1,37 +1,37 @@
 export default function ProgettiPage() {
   const progetti = [
     {
-      titolo: "Portfolio Personale",
-      descrizione: "Sito portfolio con Next.js 15, Tailwind CSS e TypeScript. Blog integrato con MDX per articoli tecnici.",
-      tecnologie: ["Next.js", "TypeScript", "Tailwind CSS", "MDX"],
-      link: "https://github.com/a-colavito",
-      anno: "2025"
-    },
-    {
-      titolo: "Sistema di Gestione",
-      descrizione: "Applicazione web per la gestione di progetti e task con autenticazione e dashboard interattiva.",
-      tecnologie: ["React", "Node.js", "PostgreSQL", "Express"],
+      titolo: "Example Project 1",
+      descrizione: "A sample project showcasing modern web technologies and best practices.",
+      tecnologie: ["React", "TypeScript", "Tailwind CSS"],
       link: "#",
       anno: "2024"
     },
     {
-      titolo: "App Mobile",
-      descrizione: "Applicazione mobile cross-platform per il tracking di attività sportive con GPS e statistiche.",
-      tecnologie: ["React Native", "Firebase", "Maps API"],
+      titolo: "Example Project 2",
+      descrizione: "Another example project demonstrating full-stack development skills.",
+      tecnologie: ["Next.js", "Node.js", "PostgreSQL"],
       link: "#",
       anno: "2024"
+    },
+    {
+      titolo: "Example Project 3",
+      descrizione: "A third example project showing mobile development capabilities.",
+      tecnologie: ["React Native", "Firebase"],
+      link: "#",
+      anno: "2023"
     }
   ]
 
   return (
     <section>
       <h1 className="font-semibold text-2xl mb-8 tracking-tighter">
-        Progetti
+        Projects
       </h1>
       
       <p className="mb-8 text-neutral-700 dark:text-neutral-300">
-        Una selezione di progetti su cui ho lavorato, sperimentando con diverse 
-        tecnologie e affrontando sfide interessanti.
+        A selection of projects I've worked on, experimenting with different 
+        technologies and tackling interesting challenges.
       </p>
 
       <div className="space-y-8">
@@ -71,7 +71,7 @@ export default function ProgettiPage() {
                 rel="noopener noreferrer"
                 className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 underline"
               >
-                Vedi su GitHub →
+                View on GitHub →
               </a>
             )}
           </div>
@@ -79,15 +79,15 @@ export default function ProgettiPage() {
       </div>
 
       <div className="mt-12 p-6 bg-neutral-50 dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800">
-        <h3 className="font-semibold text-lg mb-2">Hai un progetto in mente?</h3>
+        <h3 className="font-semibold text-lg mb-2">Have a project in mind?</h3>
         <p className="text-neutral-700 dark:text-neutral-300 mb-4">
-          Sono sempre interessato a collaborare su progetti stimolanti o a discutere di nuove idee.
+          I'm always interested in collaborating on exciting projects or discussing new ideas.
         </p>
         <a 
           href="/contatti"
           className="inline-block px-4 py-2 bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 rounded-lg hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors font-medium"
         >
-          Contattami
+          Get in touch
         </a>
       </div>
     </section>

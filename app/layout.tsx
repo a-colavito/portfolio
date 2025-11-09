@@ -70,21 +70,15 @@ export default function RootLayout({
       )}
       suppressHydrationWarning
     >
-      <body className="antialiased bg-white dark:bg-black text-black dark:text-white transition-colors duration-200">
+      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="flex flex-col min-h-screen">
-            <div className="max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 flex-grow w-full">
-              <Navbar />
-              <main className="mt-4 sm:mt-6">
-                {children}
-              </main>
-            </div>
-            <div className="max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <Footer />
-            </div>
-          </div>
-          <Analytics />
-          <SpeedInsights />
+          <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+            <Navbar />
+            {children}
+            <Footer />
+            <Analytics />
+            <SpeedInsights />
+          </main>
         </ThemeProvider>
       </body>
     </html>

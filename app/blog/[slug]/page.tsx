@@ -84,15 +84,15 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           }),
         }}
       />
-      <h1 className="title font-semibold text-xl sm:text-2xl lg:text-3xl tracking-tighter leading-tight">
+      <h1 className="title font-semibold text-2xl tracking-tighter">
         {post.metadata.title}
       </h1>
-      <div className="flex justify-between items-center mt-2 mb-6 sm:mb-8 text-sm">
-        <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
+        <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.metadata.publishedAt)}
         </p>
       </div>
-      <article className="prose prose-sm sm:prose-base">
+      <article className="prose">
         <CustomMDX source={post.content} />
       </article>
     </section>
